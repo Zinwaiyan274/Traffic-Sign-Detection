@@ -29,8 +29,9 @@ if uploaded_file is not None:
     st.write('Model Input')
     st.image(rescaled)
 
-if st.button('Predict'):
-    st.write('TRUE')
+if st.button('Say hello'):
+     st.write('Why hello there')    
+#if st.button('Predict'):
     #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #val = model.predict(test_x.reshape(1, 150, 150))
     #st.write(f'result: {np.argmax(val[0])}')
