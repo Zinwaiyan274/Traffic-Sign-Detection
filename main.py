@@ -23,7 +23,7 @@ Try Anything
 
 uploaded_file = st.file_uploader("Choose a file")
 
-if st.botton('Try'):
+if st.button('Try'):
     st.write("Done")
 
 #if uploaded_file is not None:
