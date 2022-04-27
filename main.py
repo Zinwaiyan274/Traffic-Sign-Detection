@@ -35,6 +35,8 @@ if uploaded_file is not None:
 
 if st.button('Predict'):
     #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    val = model.predict(bytes_data)
-    st.write(f'result: {np.argmax(val[0])}')
-    st.bar_chart(val[0])
+    #val = model.predict(bytes_data)
+    #st.write(f'result: {np.argmax(val[0])}')
+    #st.bar_chart(val[0])
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
