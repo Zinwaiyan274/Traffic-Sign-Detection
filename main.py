@@ -27,7 +27,7 @@ uploaded_file = st.file_uploader("Choose a file")
 #    st.write("Done")
 
 if uploaded_file is not None:
-     
+    bytes_data = uploaded_file.getvalue()
     #img = cv2.resize(uploaded_file, (150, 150))
     #rescaled = cv2.resize(img, (150, 150), interpolation=cv2.INTER_NEAREST)
     st.write('Model Input')
@@ -35,6 +35,6 @@ if uploaded_file is not None:
 
 if st.button('Predict'):
     #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    val = model.predict(uploaded_file)
+    val = model.predict(bytes_data)
     st.write(f'result: {np.argmax(val[0])}')
     st.bar_chart(val[0])
