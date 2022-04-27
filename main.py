@@ -35,6 +35,6 @@ if uploaded_file is not None:
 
 if st.button('Predict'):
     #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    val = model.predict(uploaded_file.reshape(1, 150, 150))
+    val = model.predict(uploaded_file)
     st.write(f'result: {np.argmax(val[0])}')
     st.bar_chart(val[0])
