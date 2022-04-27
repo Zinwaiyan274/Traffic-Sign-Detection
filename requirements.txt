@@ -3,5 +3,5 @@ matplotlib
 tensorflow
 runipy
 opencv-python
-streamlit==1.7.0
+streamlit==1.8.1
 
