@@ -4,11 +4,11 @@ import cv2
 from tensorflow.keras.models import load_model
 import streamlit as st
 
-MODEL_DIR = os.path.join(os.path.dirname(__file__), 'Final.h5')
+MODEL_DIR = os.path.join(os.path.dirname(__file__), 'model')
 if not os.path.isdir(MODEL_DIR):
     os.system('runipy Final.ipynb')
 
-model = load_model('Final.h5')
+model = load_model('model')
 # st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
 
 st.title('Traffic Sign Detection')
