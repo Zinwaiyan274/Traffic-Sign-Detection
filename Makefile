@@ -1,5 +1,5 @@
 train:
-    runipy train.ipynb
+    runipy Final.ipynb
     
 run:
-    streamlit run app.py
+    streamlit run main.py
