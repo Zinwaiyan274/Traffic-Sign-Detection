@@ -10,15 +10,12 @@ if not os.path.isdir(MODEL_DIR):
     os.system('runipy Final.ipynb')
 
 model = load_model('Final.h5')
-# st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
 
 st.title('Traffic Sign Detection')
 st.markdown('''
 Try Anything
 ''')
 
-# data = np.random.rand(28,28)
-# img = cv2.resize(data, (256, 256), interpolation=cv2.INTER_NEAREST)
 
 
 
