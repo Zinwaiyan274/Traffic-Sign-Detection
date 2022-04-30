@@ -66,3 +66,5 @@ if label == 3:
     st.write("Roundabout",perc)  
 if label == 4:
     st.write("Stop",perc)
+else:
+    None
