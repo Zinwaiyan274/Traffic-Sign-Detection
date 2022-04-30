@@ -13,10 +13,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
-
-
-
-
 st.title('Traffic Sign Detection')
 st.markdown('''
 Try Anything
@@ -57,7 +53,7 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded file', use_column_width=True)
     st.write("")
     st.write("Classifying...")
-    label,perc = teachable_machine_classification(image, 'catdog.h5')
+    label,perc = teachable_machine_classification(image, 'Final.h5')
     if label == 1:
         st.write("Its a Dog, confidence level:",perc)
     else:
