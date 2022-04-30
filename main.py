@@ -26,13 +26,14 @@ uploaded_file = st.file_uploader("Choose a file")
 
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
+    img_np = cv2.imdecode(bytes_data, cv2.CV_LOAD_IMAGE_COLOR)
     #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     #string_data = stringio.read()
     #img = cv2.imread(string_data)
     #rescaled = cv2.resize(img, (150, 150), interpolation=cv2.INTER_NEAREST)
     st.write('Model Input')
-    #st.image(img)
-    st.write(bytes_data)
+    st.image(img_np)
+    #st.write(bytes_data)
 
 if st.button('Predict'):
     test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
