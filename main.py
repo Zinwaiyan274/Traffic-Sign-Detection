@@ -55,15 +55,15 @@ if uploaded_file is not None:
     st.write("Classifying...")
     label,perc = teachable_machine_classification(image, 'Final.h5')
     st.write(label)
-    if label == 0:
+    if label.any() == 0:
      st.write("Giveway",perc)
-    if label == 1:
+    if label.any() == 1:
       st.write("NoEntry",perc)   
-    if label == 2:
+    if label.any() == 2:
      st.write("NoHorn",perc)   
-    if label == 3:
+    if label.any() == 3:
      st.write("Roundabout",perc)  
-    if label == 4:
+    if label.any() == 4:
      st.write("Stop",perc)
     else:
      st.write("Have a great day")
