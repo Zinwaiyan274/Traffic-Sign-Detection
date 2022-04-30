@@ -54,8 +54,9 @@ if uploaded_file is not None:
     st.write("")
     st.write("Classifying...")
     label,perc = teachable_machine_classification(image, 'Final.h5')
+    st.write(label)
    
-st.write(label)
+
 #if label == 0:
 #    st.write("Giveway",perc)
 #if label == 1:
