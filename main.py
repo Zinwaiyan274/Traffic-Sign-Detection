@@ -26,10 +26,10 @@ uploaded_file = st.file_uploader("Choose a file")
 
 if uploaded_file is not None:
     #bytes_data = uploaded_file.getvalue()
-    img = cv2.resize(uploaded_file, (150, 150))
-    rescaled = cv2.resize(img, (150, 150), interpolation=cv2.INTER_NEAREST)
+    #img = cv2.resize(uploaded_file, (150, 150))
+    #rescaled = cv2.resize(img, (150, 150), interpolation=cv2.INTER_NEAREST)
     st.write('Model Input')
-    st.image(rescaled)
+    st.image(uploaded_file)
 
 if st.button('Predict'):
     test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
