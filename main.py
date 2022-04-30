@@ -1,44 +1,64 @@
-import os
-import pandas as pd
-import numpy as np
-import cv2
-from tensorflow.keras.models import load_model
 import streamlit as st
+import tensorflow as tf
+import cv2
+from PIL import Image, ImageOps
+import numpy as np
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import PIL
+import tensorflow as tf
 
-MODEL_DIR = os.path.join(os.path.dirname(__file__), 'Final.h5')
-if not os.path.isdir(MODEL_DIR):
-    os.system('runipy Final.ipynb')
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
 
-model = load_model('Final.h5')
+
+
+
 
 st.title('Traffic Sign Detection')
 st.markdown('''
 Try Anything
 ''')
 
+@st.cache(allow_output_mutation=True)
+
+def teachable_machine_classification(img, weights_file):
+    # Load the model
+    model = keras.models.load_model(weights_file)
+
+    # Create the array of the right shape to feed into the keras model
+    data = np.ndarray(shape=(1, 200, 200, 3), dtype=np.float32)
+    image = img
+    #image sizing
+    size = (200, 200)
+    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+
+    #turn the image into a numpy array
+    image_array = np.asarray(image)
+    # Normalize the image
+    normalized_image_array = (image_array.astype(np.float32) / 255)
+
+    # Load the image into the array
+    data[0] = normalized_image_array
+
+    # run the inference
+    prediction_percentage = model.predict(data)
+    prediction=prediction_percentage.round()
+    
+    return  prediction,prediction_percentage
 
 
-
-uploaded_file = st.file_uploader("Choose a file")
-
-#if st.button('Try'):
-#    st.write("Done")
+uploaded_file = st.file_uploader("Choose a Image...")
 
 if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    img_np = cv2.imdecode(bytes_data, cv2.CV_LOAD_IMAGE_COLOR)
-    #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    #string_data = stringio.read()
-    #img = cv2.imread(string_data)
-    #rescaled = cv2.resize(img, (150, 150), interpolation=cv2.INTER_NEAREST)
-    st.write('Model Input')
-    st.image(img_np)
-    #st.write(bytes_data)
-
-if st.button('Predict'):
-    test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    val = model.predict(test_x)
-    st.write(f'result: {np.argmax(val[0])}')
-    st.bar_chart(val[0])
-    #dataframe = pd.read_csv(uploaded_file)
-    #st.write(dataframe)
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded file', use_column_width=True)
+    st.write("")
+    st.write("Classifying...")
+    label,perc = teachable_machine_classification(image, 'catdog.h5')
+    if label == 1:
+        st.write("Its a Dog, confidence level:",perc)
+    else:
+        st.write("Its a Cat, confidence level:",1-perc)
