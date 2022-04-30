@@ -25,8 +25,8 @@ uploaded_file = st.file_uploader("Choose a file")
 #    st.write("Done")
 
 if uploaded_file is not None:
-    #bytes_data = uploaded_file.getvalue()
-    img = cv2.imread(uploaded_file)
+    bytes_data = uploaded_file.getvalue()
+    img = cv2.imread(bytes_data)
     #rescaled = cv2.resize(img, (150, 150), interpolation=cv2.INTER_NEAREST)
     st.write('Model Input')
     st.image(img)
