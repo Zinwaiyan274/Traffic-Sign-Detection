@@ -67,4 +67,4 @@ if label == 3:
 if label == 4:
     st.write("Stop",perc)
 else:
-    None
+    st.write("Have a great day")
