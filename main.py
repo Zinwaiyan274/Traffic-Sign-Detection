@@ -54,7 +54,5 @@ if uploaded_file is not None:
     st.write("")
     st.write("Classifying...")
     label,perc = teachable_machine_classification(image, 'Final.h5')
-    if label == 1:
-        st.write("Its a Dog, confidence level:",perc)
-    else:
-        st.write("Its a Cat, confidence level:",1-perc)
+   
+st.write(label)
