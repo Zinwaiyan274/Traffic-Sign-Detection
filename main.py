@@ -55,9 +55,7 @@ if uploaded_file is not None:
     st.write("Classifying...")
     label,perc = teachable_machine_classification(image, 'Final.h5')
     st.write(label)
-    htmltables = get_tables(label)
-    for table in htmltables:
-     array=make_array(table)
+    df = pd. DataFrame(label, columns=['Column1', 'Column2']) 
     st.write(array)
     if label.any() == 0:
      st.write("Giveway",perc)
