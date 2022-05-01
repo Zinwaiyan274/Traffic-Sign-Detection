@@ -58,18 +58,7 @@ if uploaded_file is not None:
     st.write(label)
     df = pd. DataFrame(label, columns=['Giveway', 'NoEntry','NoHorn','Roundabout','Stop']) 
     st.write(df)
-    if label.any() == 0:
-     st.write("Giveway",perc)
-    if label.any() == 1:
-      st.write("NoEntry",perc)   
-    if label.any() == 2:
-     st.write("NoHorn",perc)   
-    if label.any() == 3:
-     st.write("Roundabout",perc)  
-    if label.any() == 4:
-     st.write("Stop",perc)
-    else:
-     st.write("Have a great day")
+    
    
 
 #if label == 0:
