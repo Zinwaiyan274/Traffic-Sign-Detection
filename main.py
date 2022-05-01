@@ -56,8 +56,8 @@ if uploaded_file is not None:
     st.write("Classifying...")
     label,perc = teachable_machine_classification(image, 'Final.h5')
     st.write(label)
-    df = pd. DataFrame(label, columns=['Column1', 'Column2']) 
-    st.write(array)
+    df = pd. DataFrame(label, columns=['Giveway', 'NoEntry','NoHorn','Roundabout','Stop']) 
+    st.write(df)
     if label.any() == 0:
      st.write("Giveway",perc)
     if label.any() == 1:
